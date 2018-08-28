@@ -38,11 +38,11 @@ xDebug is enabled by default, but you need to configure remote host IP, and they
 
 ### Windows 10 xDebug configuration
 1. Check local IP on the host machine
-  - Windows 10, you can get ip by run `ipconfig`, the IP under `Primary Virtual Switch` or `Default Gateway`
+  - __Windows 10__, you can get ip by run `ipconfig`, the IP under `Primary Virtual Switch` or `Default Gateway`
   
   ![Windows 10](https://github.com/its404/alpine-php7.2-nginx/blob/master/images/Hyper-V.png "Windows 10 Hyper-V")
   
-  - Mac
+  - __Mac__, 
     Run `ipconfig getifadd en1`
 2. Configure local IP to `PHP_XDEBUG_REMOTE_HOST` as environment variable in docker-compose, see above sample
 3. Configure VS code, following is a sample configuration
