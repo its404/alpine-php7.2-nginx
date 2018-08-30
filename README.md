@@ -29,23 +29,41 @@ services:
       - ./:/var/www/public
     ports:
       - '8000:80'
-    environment:
-      PHP_XDEBUG_REMOTE_HOST: 172.20.232.161
 ```
 
 ## Configue xDebug
 xDebug is enabled by default, but you need to configure remote host IP, and they are different on Windows and Mac
 
-### Windows 10 xDebug configuration
-1. Check local IP on the host machine
-  - __Windows 10__, you can get ip by run `ipconfig`, the IP under `Primary Virtual Switch` or `Default Gateway`
+### xDebug configuration
+1. Host machine configuration
+    - __Windows 10:__ 
+    xDebug is enabled by default on Windows 10, needn't to configure
   
-  ![Windows 10](https://github.com/its404/alpine-php7.2-nginx/blob/master/images/Hyper-V.png "Windows 10 Hyper-V")
-  
-  - __Mac__, 
-    Run `ipconfig getifadd en1`
-2. Configure local IP to `PHP_XDEBUG_REMOTE_HOST` as environment variable in docker-compose, see above sample
-3. Configure VS code, following is a sample configuration
+    - __Mac:__
+    Need to configure `PHP_XDEBUG_REMOTE_HOST` to `docker.for.mac.localhost` in either docker-compose or docker command
+
+    __docker-compose sample__
+
+```
+version: '3'
+services:
+  web:
+    image: its404/alpine-php7.2-nginx
+    volumes:
+      - ./:/var/www/public
+    ports:
+      - '8000:80'
+    environment:
+      PHP_XDEBUG_REMOTE_HOST: docker.for.mac.localhost
+```
+
+    __docker command__
+
+    `docker run -d -p 8000:80 -v local_path:/var/www/public -e PHP_XDEBUG_REMOTE_HOST=docker.for.mac.localhost its404/alpine-php7.2-nginx`
+
+    > Replace `local_path` to your real host machine path
+
+1. Configure VS code, following is a sample configuration
 
 ```
 {
