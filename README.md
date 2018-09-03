@@ -42,7 +42,7 @@ then run the command:
 
 
 ## Configue xDebug
-xDebug is enabled by default, but you need to configure remote host IP, and they are different on Windows and Mac
+xDebug is enabled by default, but you need to configure `remote_host`, and they are different on Windows and Mac
 
 ### xDebug configuration
 1.Host machine configuration
